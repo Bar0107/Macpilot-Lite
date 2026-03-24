@@ -1,0 +1,39 @@
+{
+  "name": "macpilot-lite",
+  "version": "0.1.0",
+  "description": "Control your Mac with natural language. A local-first AI operator for macOS.",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "example:organize": "tsx examples/organize-downloads.ts",
+    "example:email": "tsx examples/draft-email.ts",
+    "example:calendar": "tsx examples/calendar-this-week.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "macos",
+    "ai",
+    "agent",
+    "applescript",
+    "local-first",
+    "automation"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
