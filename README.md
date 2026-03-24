@@ -17,6 +17,93 @@ Most AI agents run in the cloud. MacPilot runs on your machine.
 
 ---
 
+# Part 1: Getting Started
+
+> 처음 사용하는 분을 위한 단계별 가이드입니다.
+> 개발 경험이 없어도 괜찮습니다. 순서대로 따라하세요.
+
+MacPilot Lite는 macOS 전용입니다.
+
+---
+
+### Step 1. Node.js 설치
+
+터미널을 열고 아래 명령어를 입력하세요:
+
+```bash
+node -v
+```
+
+`v18.x.x` 이상이 출력되면 이미 설치되어 있습니다. 건너뛰세요.
+
+설치되어 있지 않다면:
+
+- **방법 A (Homebrew):**
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew install node
+  ```
+
+- **방법 B (공식 설치파일):**
+  https://nodejs.org 에서 LTS 버전을 다운로드하고 설치하세요.
+
+### Step 2. 프로젝트 다운로드
+
+```bash
+git clone https://github.com/Bar0107/Macpilot-Lite.git
+cd Macpilot-Lite
+```
+
+### Step 3. 의존성 설치
+
+```bash
+npm install
+```
+
+### Step 4. 환경 설정
+
+```bash
+cp .env.example .env.local
+```
+
+`.env.local` 파일을 열고 사용할 AI 프로바이더의 API 키를 입력하세요.
+API 키가 없어도 기본 mock 모드로 동작합니다.
+
+### Step 5. 예제 실행
+
+```bash
+# 시스템 상태 확인 (즉시 실행 — 안전한 읽기 전용 명령)
+npm run example:calendar
+
+# 다운로드 폴더 정리 (승인 게이트 — 실제로 파일을 이동하지 않음)
+npm run example:organize
+
+# 이메일 초안 작성 (승인 게이트 — 실제로 Mail.app을 열지 않음)
+npm run example:email
+```
+
+승인이 필요한 명령을 실제로 실행하려면 `--approve` 플래그를 붙이세요:
+
+```bash
+npx tsx examples/organize-downloads.ts --approve
+npx tsx examples/draft-email.ts --approve
+```
+
+### Step 6. macOS 권한 허용
+
+Calendar.app이나 Mail.app을 제어하려면 Accessibility 권한이 필요합니다.
+처음 실행하면 macOS가 권한을 요청합니다:
+
+**System Settings → Privacy & Security → Accessibility** 에서 터미널 앱을 허용하세요.
+
+---
+
+# Part 2: Overview
+
+> MacPilot Lite가 무엇이고, 어떤 일을 할 수 있는지 설명합니다.
+
+---
+
 ## What You Can Do
 
 ```
@@ -35,42 +122,29 @@ Most AI agents run in the cloud. MacPilot runs on your machine.
 
 MacPilot started as an experiment: what if your Mac could execute intent, not clicks?
 
-## Quick Start
+---
 
-### Prerequisites
+# Part 3: For Developers
+
+> 아래부터는 개발자용 문서입니다.
+> 아키텍처, 코드 구조, 확장 방법을 다룹니다.
+
+---
+
+## Developer Commands
+
+### Requirements
 
 - macOS 13+ (Ventura or later)
 - Node.js 18+
-- An API key from Anthropic, OpenAI, or a local Ollama instance
-
-### Setup
 
 ```bash
-git clone https://github.com/youruser/macpilot-lite.git
-cd macpilot-lite
-npm install
-cp .env.example .env.local
-# Add your API key to .env.local
+npm run typecheck         # Type-check
+npm run build             # Compile to dist/
+npm run example:organize  # Run organize example
+npm run example:email     # Run email example
+npm run example:calendar  # Run calendar example
 ```
-
-### Try It
-
-```bash
-# Run an example workflow
-npm run example:organize
-npm run example:email
-npm run example:calendar
-
-# Type-check the project
-npm run typecheck
-
-# Build
-npm run build
-```
-
-### macOS Permissions
-
-MacPilot needs Accessibility permissions to control apps on your behalf. On first run, you'll be prompted to grant access in **System Settings → Privacy & Security → Accessibility**.
 
 ---
 
