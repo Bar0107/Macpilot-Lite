@@ -13,7 +13,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/cli.ts",
+    "start": "tsx src/cli.ts",
     "example:organize": "tsx examples/organize-downloads.ts",
     "example:email": "tsx examples/draft-email.ts",
     "example:calendar": "tsx examples/calendar-this-week.ts",

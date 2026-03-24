@@ -69,25 +69,33 @@ cp .env.example .env.local
 Open `.env.local` and add your AI provider API key.
 No API key? No problem — it runs in mock mode by default.
 
-### Step 5. Run examples
+### Step 5. Run MacPilot Lite
 
 ```bash
-# Open Calendar in week view (runs immediately — safe, read-only)
-npm run example:calendar
-
-# Organize Downloads folder (approval gate — won't move files without approval)
-npm run example:organize
-
-# Draft an email (approval gate — won't open Mail.app without approval)
-npm run example:email
+npm run dev
 ```
 
-To actually execute actions that require approval, add the `--approve` flag:
+You'll see an interactive prompt:
 
-```bash
-npx tsx examples/organize-downloads.ts --approve
-npx tsx examples/draft-email.ts --approve
 ```
+  MacPilot Lite
+  Control your Mac with natural language.
+
+macpilot>
+```
+
+Type a command and press Enter:
+
+```
+macpilot> What's my system status?
+macpilot> Open Calendar and show me this week
+macpilot> Organize my Downloads folder by file type
+macpilot> Draft an email to alex@example.com about the project
+```
+
+Commands that modify files or send emails will ask for approval first.
+Type `approve` to confirm, or enter a new command to skip.
+Type `quit` to exit.
 
 ### Step 6. Grant macOS permissions
 
