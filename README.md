@@ -19,88 +19,88 @@ Most AI agents run in the cloud. MacPilot runs on your machine.
 
 # Part 1: Getting Started
 
-> 처음 사용하는 분을 위한 단계별 가이드입니다.
-> 개발 경험이 없어도 괜찮습니다. 순서대로 따라하세요.
+> A step-by-step guide for first-time users.
+> No coding experience required. Just follow the steps.
 
-MacPilot Lite는 macOS 전용입니다.
+MacPilot Lite is macOS only.
 
 ---
 
-### Step 1. Node.js 설치
+### Step 1. Install Node.js
 
-터미널을 열고 아래 명령어를 입력하세요:
+Open Terminal and run:
 
 ```bash
 node -v
 ```
 
-`v18.x.x` 이상이 출력되면 이미 설치되어 있습니다. 건너뛰세요.
+If you see `v18.x.x` or higher, you're good. Skip to Step 2.
 
-설치되어 있지 않다면:
+If not installed:
 
-- **방법 A (Homebrew):**
+- **Option A (Homebrew):**
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install node
   ```
 
-- **방법 B (공식 설치파일):**
-  https://nodejs.org 에서 LTS 버전을 다운로드하고 설치하세요.
+- **Option B (Official installer):**
+  Download the LTS version from https://nodejs.org and install it.
 
-### Step 2. 프로젝트 다운로드
+### Step 2. Download the project
 
 ```bash
 git clone https://github.com/Bar0107/Macpilot-Lite.git
 cd Macpilot-Lite
 ```
 
-### Step 3. 의존성 설치
+### Step 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-### Step 4. 환경 설정
+### Step 4. Configure environment
 
 ```bash
 cp .env.example .env.local
 ```
 
-`.env.local` 파일을 열고 사용할 AI 프로바이더의 API 키를 입력하세요.
-API 키가 없어도 기본 mock 모드로 동작합니다.
+Open `.env.local` and add your AI provider API key.
+No API key? No problem — it runs in mock mode by default.
 
-### Step 5. 예제 실행
+### Step 5. Run examples
 
 ```bash
-# 시스템 상태 확인 (즉시 실행 — 안전한 읽기 전용 명령)
+# Open Calendar in week view (runs immediately — safe, read-only)
 npm run example:calendar
 
-# 다운로드 폴더 정리 (승인 게이트 — 실제로 파일을 이동하지 않음)
+# Organize Downloads folder (approval gate — won't move files without approval)
 npm run example:organize
 
-# 이메일 초안 작성 (승인 게이트 — 실제로 Mail.app을 열지 않음)
+# Draft an email (approval gate — won't open Mail.app without approval)
 npm run example:email
 ```
 
-승인이 필요한 명령을 실제로 실행하려면 `--approve` 플래그를 붙이세요:
+To actually execute actions that require approval, add the `--approve` flag:
 
 ```bash
 npx tsx examples/organize-downloads.ts --approve
 npx tsx examples/draft-email.ts --approve
 ```
 
-### Step 6. macOS 권한 허용
+### Step 6. Grant macOS permissions
 
-Calendar.app이나 Mail.app을 제어하려면 Accessibility 권한이 필요합니다.
-처음 실행하면 macOS가 권한을 요청합니다:
+To control Calendar.app or Mail.app, MacPilot needs Accessibility access.
+macOS will prompt you on first run:
 
-**System Settings → Privacy & Security → Accessibility** 에서 터미널 앱을 허용하세요.
+**System Settings → Privacy & Security → Accessibility** — enable your Terminal app.
 
 ---
 
 # Part 2: Overview
 
-> MacPilot Lite가 무엇이고, 어떤 일을 할 수 있는지 설명합니다.
+> What MacPilot Lite is and what it can do.
 
 ---
 
@@ -126,8 +126,7 @@ MacPilot started as an experiment: what if your Mac could execute intent, not cl
 
 # Part 3: For Developers
 
-> 아래부터는 개발자용 문서입니다.
-> 아키텍처, 코드 구조, 확장 방법을 다룹니다.
+> Architecture, code structure, and how to extend MacPilot Lite.
 
 ---
 
