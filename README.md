@@ -77,27 +77,53 @@ You should already be inside the `Macpilot-Lite` folder from Step 2. Run:
 npm run dev
 ```
 
-You'll see an interactive prompt:
+This opens an interactive CLI in your terminal:
 
 ```
   MacPilot Lite
   Control your Mac with natural language.
 
-macpilot>
+macpilot> _
 ```
 
-Type a command and press Enter:
+Type any command in plain English and press Enter. Here's what a real session looks like:
 
 ```
 macpilot> What's my system status?
+
+  CPU: Apple M4
+  CPU Usage: 12.3%
+  Memory: 24.0 GB total
+  Disk: 227Gi available of 460Gi
+  Battery: 100% (charging)
+
 macpilot> Open Calendar and show me this week
+
+  Opened Calendar
+  Calendar opened in week view
+
 macpilot> Organize my Downloads folder by file type
-macpilot> Draft an email to alex@example.com about the project
+
+  Approval required: Organize Downloads folder by file type
+  Tools: fs_list, fs_move
+  Type "approve" to execute, or enter a new command.
+
+macpilot> approve
+
+  Organized 34 files:
+    photo.png -> Images/
+    report.pdf -> Documents/
+    backup.zip -> Archives/
+    ...
+
+macpilot> quit
+  Bye.
 ```
 
-Commands that modify files or send emails will ask for approval first.
-Type `approve` to confirm, or enter a new command to skip.
-Type `quit` to exit.
+**Key commands:**
+- Type any natural language command to execute it
+- Type `approve` to confirm actions that modify files or send emails
+- Type `quit` to exit
 
 ### Step 6. Grant macOS permissions
 
