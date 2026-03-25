@@ -66,8 +66,37 @@ npm install
 cp .env.example .env.local
 ```
 
-Open `.env.local` and add your AI provider API key.
-No API key? No problem — it runs in mock mode by default.
+Open `.env.local` in any text editor and set your AI provider:
+
+```bash
+# Option A: Anthropic (recommended)
+AI_PROVIDER="anthropic"
+ANTHROPIC_API_KEY="sk-ant-..."
+
+# Option B: OpenAI
+AI_PROVIDER="openai"
+OPENAI_API_KEY="sk-..."
+
+# Option C: Ollama (free, runs locally)
+AI_PROVIDER="ollama"
+# Make sure Ollama is running: ollama serve
+
+# Option D: No API key (default)
+AI_PROVIDER="mock"
+# Works offline with 5 built-in command patterns only
+```
+
+**Where to get API keys:**
+- Anthropic: https://console.anthropic.com/settings/keys
+- OpenAI: https://platform.openai.com/api-keys
+- Ollama (free, local): https://ollama.com — install and run `ollama serve`
+
+Without an API key, MacPilot Lite runs in mock mode. It will recognize these 5 commands only:
+- System status
+- Open an app
+- Open Calendar (week view)
+- Organize Downloads folder
+- Draft an email
 
 ### Step 5. Run MacPilot Lite
 
