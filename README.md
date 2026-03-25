@@ -71,10 +71,9 @@ No API key? No problem — it runs in mock mode by default.
 
 ### Step 5. Run MacPilot Lite
 
-Make sure you're inside the project folder (from Step 2), then run:
+You should already be inside the `Macpilot-Lite` folder from Step 2. Run:
 
 ```bash
-cd Macpilot-Lite
 npm run dev
 ```
 
