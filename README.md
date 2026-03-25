@@ -64,41 +64,75 @@ npm install
 
 ### Step 4. Configure environment
 
+First, copy the example config:
+
 ```bash
 cp .env.example .env.local
 ```
 
-Open `.env.local` in any text editor and set your AI provider:
+Now you need to edit the `.env.local` file. Open it with this command:
 
 ```bash
-# Option A: Anthropic (recommended)
-AI_PROVIDER="anthropic"
-ANTHROPIC_API_KEY="sk-ant-..."
-
-# Option B: OpenAI
-AI_PROVIDER="openai"
-OPENAI_API_KEY="sk-..."
-
-# Option C: Ollama (free, runs locally)
-AI_PROVIDER="ollama"
-# Make sure Ollama is running: ollama serve
-
-# Option D: No API key (default)
-AI_PROVIDER="mock"
-# Works offline with 5 built-in command patterns only
+nano .env.local
 ```
 
-**Where to get API keys:**
-- Anthropic: https://console.anthropic.com/settings/keys
-- OpenAI: https://platform.openai.com/api-keys
-- Ollama (free, local): https://ollama.com — install and run `ollama serve`
+This opens a simple text editor inside your terminal. Choose **one** of the options below, and change the matching lines in the file:
 
-Without an API key, MacPilot Lite runs in mock mode. It will recognize these 5 commands only:
+---
+
+**Option A: Anthropic (recommended)**
+
+Change these two lines:
+```
+AI_PROVIDER="anthropic"
+ANTHROPIC_API_KEY="paste-your-key-here"
+```
+Get your key at: https://console.anthropic.com/settings/keys
+
+---
+
+**Option B: OpenAI**
+
+Change these two lines:
+```
+AI_PROVIDER="openai"
+OPENAI_API_KEY="paste-your-key-here"
+```
+Get your key at: https://platform.openai.com/api-keys
+
+---
+
+**Option C: Ollama (free, runs entirely on your Mac)**
+
+1. Download and install Ollama from https://ollama.com
+2. Open a **new** Terminal window and run:
+   ```bash
+   ollama serve
+   ```
+3. Keep that window open. Go back to your original Terminal window.
+4. In `.env.local`, change this line:
+   ```
+   AI_PROVIDER="ollama"
+   ```
+
+---
+
+**Option D: No setup needed (default)**
+
+If you don't change anything, MacPilot runs in mock mode. No API key required, but it only recognizes these 5 commands:
 - System status
 - Open an app
 - Open Calendar (week view)
 - Organize Downloads folder
 - Draft an email
+
+---
+
+After editing, save the file:
+- Press `Ctrl + O`, then `Enter` to save
+- Press `Ctrl + X` to exit the editor
+
+**Important:** MacPilot Lite only accepts commands in **English**. Korean input is not supported.
 
 ### Step 5. Run MacPilot Lite
 

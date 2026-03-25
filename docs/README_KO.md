@@ -62,41 +62,75 @@ npm install
 
 ### Step 4. 환경 설정
 
+먼저 설정 파일을 복사하세요:
+
 ```bash
 cp .env.example .env.local
 ```
 
-`.env.local` 파일을 텍스트 에디터로 열고 AI 프로바이더를 설정하세요:
+이제 `.env.local` 파일을 편집해야 합니다. 아래 명령어로 여세요:
 
 ```bash
-# 옵션 A: Anthropic (추천)
-AI_PROVIDER="anthropic"
-ANTHROPIC_API_KEY="sk-ant-..."
-
-# 옵션 B: OpenAI
-AI_PROVIDER="openai"
-OPENAI_API_KEY="sk-..."
-
-# 옵션 C: Ollama (무료, 로컬 실행)
-AI_PROVIDER="ollama"
-# Ollama가 실행 중이어야 합니다: ollama serve
-
-# 옵션 D: API 키 없음 (기본값)
-AI_PROVIDER="mock"
-# 5개 내장 명령 패턴만 오프라인으로 동작
+nano .env.local
 ```
 
-**API 키 발급처:**
-- Anthropic: https://console.anthropic.com/settings/keys
-- OpenAI: https://platform.openai.com/api-keys
-- Ollama (무료, 로컬): https://ollama.com — 설치 후 `ollama serve` 실행
+터미널 안에서 간단한 텍스트 편집기가 열립니다. 아래 옵션 중 **하나를 골라서** 해당 줄을 수정하세요:
 
-API 키가 없으면 mock 모드로 실행됩니다. 다음 5개 명령만 인식합니다:
+---
+
+**옵션 A: Anthropic (추천)**
+
+이 두 줄을 수정하세요:
+```
+AI_PROVIDER="anthropic"
+ANTHROPIC_API_KEY="여기에-키를-붙여넣기"
+```
+키 발급: https://console.anthropic.com/settings/keys
+
+---
+
+**옵션 B: OpenAI**
+
+이 두 줄을 수정하세요:
+```
+AI_PROVIDER="openai"
+OPENAI_API_KEY="여기에-키를-붙여넣기"
+```
+키 발급: https://platform.openai.com/api-keys
+
+---
+
+**옵션 C: Ollama (무료, 맥에서 로컬 실행)**
+
+1. https://ollama.com 에서 Ollama를 다운로드하고 설치하세요
+2. **새 터미널 창**을 열고 아래 명령어를 실행하세요:
+   ```bash
+   ollama serve
+   ```
+3. 그 창은 열어두세요. 원래 터미널 창으로 돌아가세요.
+4. `.env.local`에서 이 줄을 수정하세요:
+   ```
+   AI_PROVIDER="ollama"
+   ```
+
+---
+
+**옵션 D: 설정 없이 바로 사용 (기본값)**
+
+아무것도 수정하지 않으면 mock 모드로 실행됩니다. API 키 불필요. 다만 아래 5개 명령만 인식합니다:
 - 시스템 상태 확인
 - 앱 열기
 - 캘린더 열기 (주간 보기)
 - 다운로드 폴더 정리
 - 이메일 초안 작성
+
+---
+
+편집이 끝나면 파일을 저장하세요:
+- `Ctrl + O` 누르고 `Enter` → 저장
+- `Ctrl + X` → 편집기 종료
+
+**중요:** MacPilot Lite는 **영어 명령만** 지원합니다. 한국어는 인식되지 않습니다.
 
 ### Step 5. MacPilot Lite 실행
 
