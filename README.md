@@ -4,6 +4,8 @@
 ![Local First](https://img.shields.io/badge/local--first-yes-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+**[한국어](./docs/README_KO.md)** | English
+
 **Control your Mac with natural language.**
 Open apps, draft emails, organize files, and automate workflows — locally.
 A local-first AI operator for macOS.
